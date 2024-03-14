@@ -1,7 +1,6 @@
 package game
 
 import (
-	"fmt"
 	"math/rand"
 	"time"
 )
@@ -9,6 +8,7 @@ import (
 const (
 	MaxRounds         = 3
 	MaxChoiceAttempts = 3
+	GameMaxNumber     = 10
 )
 
 type GameManager struct {
@@ -31,8 +31,7 @@ func (g *GameManager) InitGameManager() {
 
 func (g *GameManager) InitNewNumber() {
 	rand.Seed(time.Now().UnixNano())
-	g.hiddenNumber = rand.Intn(10)
-	fmt.Println(fmt.Sprintf("INITED: %d", g.hiddenNumber))
+	g.hiddenNumber = rand.Intn(GameMaxNumber)
 }
 
 func (g *GameManager) ChoiceNumber(n int) bool {
